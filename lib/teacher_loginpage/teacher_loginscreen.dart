@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:tution_master/teacher_signupscreen/teacher_signupscreen.dart';
 
 class Teacherloginscreen extends StatelessWidget {
   @override
@@ -36,7 +37,7 @@ class Teacherloginscreen extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Login",
+                      "Teacher Login",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
@@ -54,6 +55,8 @@ class Teacherloginscreen extends StatelessWidget {
                   child: Column(children: [
                     TextFormField(
                       decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          hintText: " Enter Email",
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 5))),
                     ),
@@ -62,6 +65,8 @@ class Teacherloginscreen extends StatelessWidget {
                     ),
                     TextFormField(
                       decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock_outline),
+                          hintText: " Enter Password",
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 5))),
                     )
@@ -103,11 +108,20 @@ class Teacherloginscreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Don't have an account?"),
-                    Text(
-                      " Sign up",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Teachersignupscreen(),
+                            ));
+                      },
+                      child: Text(
+                        " Sign up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ),
                       ),
                     )
                   ],

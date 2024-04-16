@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
 class Studenthomescreen extends StatefulWidget {
@@ -13,28 +15,78 @@ class _StudenthomescreenState extends State<Studenthomescreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          iconSize: 30,
-          backgroundColor: Color(0xff0095FF),
-          onTap: (index) {
-            selectedindex = index;
-            setState(() {});
-          },
-          currentIndex: selectedindex,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.playlist_add_rounded), label: "added list"),
-          ]),
+      backgroundColor: const Color.fromARGB(255, 202, 227, 239),
       resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
-        child: Text("ghj"),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.amber,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Name"),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text("Subject"),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text("qulification")
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 80,
+                                  child: Center(child: Text("Add")),
+                                  decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromARGB(255, 1, 164, 7),
+                                      borderRadius: BorderRadius.circular(30)),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                  separatorBuilder: (context, index) => SizedBox(
+                        height: 5,
+                      ),
+                  itemCount: 25)
+            ],
+          ),
+        ),
       ),
     ));
   }

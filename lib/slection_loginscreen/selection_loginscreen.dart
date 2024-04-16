@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, avoid_returning_null_for_void, unnecessary_import
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tution_master/student_loginscreen/student_loginscreen.dart';
+
+import 'package:tution_master/teacher_loginpage/teacher_loginscreen.dart';
 
 class Selectionuserscreen extends StatefulWidget {
   const Selectionuserscreen({super.key});
@@ -14,10 +16,14 @@ class Selectionuserscreen extends StatefulWidget {
 
 class _SelectionuserscreenState extends State<Selectionuserscreen> {
   int selectedindex = 0;
+
   List<Map> userselection = [
     {"name": "Teacher", "userprofile": "assets/images/teacher_profile.png"},
     {"name": "Student", "userprofile": "assets/images/student_profile.png"}
   ];
+
+  List selectionscreen = [Teacherloginscreen(), Studentloginscreen()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,8 +91,8 @@ class _SelectionuserscreenState extends State<Selectionuserscreen> {
                           setState(() {});
                         },
                         child: Container(
-                          height: 60,
-                          width: 60,
+                          height: index == selectedindex ? 80 : 60,
+                          width: index == selectedindex ? 80 : 60,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                           ),
@@ -124,11 +130,15 @@ class _SelectionuserscreenState extends State<Selectionuserscreen> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Studentloginscreen(),
-                            ));
+                        if (selectedindex == selectedindex) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      selectionscreen[selectedindex]));
+                        } else {
+                          return null;
+                        }
                       },
                       color: Color(0xff0095FF),
                       elevation: 0,

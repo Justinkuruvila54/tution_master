@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:tution_master/student_bottomtab/student_bottomtab.dart';
 import 'package:tution_master/student_signupscreen/student_signupscreen.dart';
-import 'package:tution_master/studenthomescreen/student_homescreen.dart';
 
 class Studentloginscreen extends StatelessWidget {
   @override
@@ -38,7 +38,7 @@ class Studentloginscreen extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Login",
+                      " Student Login",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
@@ -89,27 +89,25 @@ class Studentloginscreen extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Studentbottomtab(),
+                          ),
+                        );
+                      },
                       color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Studenthomescreen(),
-                              ));
-                        },
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Colors.white,
                         ),
                       ),
                     ),
