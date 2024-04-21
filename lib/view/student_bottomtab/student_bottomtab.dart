@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:tution_master/student_addedlist_page/student_addedlist-screen.dart';
-import 'package:tution_master/student_note_page/student_note_screen.dart';
-import 'package:tution_master/student_search_page/student_search_screen.dart';
-import 'package:tution_master/studenthomescreen/student_homescreen.dart';
+import 'package:tution_master/view/student_addedlist_page/student_addedlist-screen.dart';
+import 'package:tution_master/view/student_note_page/student_note_screen.dart';
+import 'package:tution_master/view/student_search_page/student_search_screen.dart';
+import 'package:tution_master/view/studenthomescreen/student_homescreen.dart';
 
 class Studentbottomtab extends StatefulWidget {
   const Studentbottomtab({super.key});

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:tution_master/teacher_signupscreen/teacher_signupscreen.dart';
+import 'package:tution_master/view/teacher_signupscreen/teacher_signupscreen.dart';
 
 class Teacherloginscreen extends StatelessWidget {
   @override

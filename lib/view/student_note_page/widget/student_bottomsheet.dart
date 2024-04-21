@@ -3,7 +3,7 @@ import 'package:tution_master/utils/colors_constants.dart';
 
 Future<dynamic> Studentbottomsheet(BuildContext context) {
   return showModalBottomSheet(
-      // isScrollControlled: true,
+      isScrollControlled: true,
       backgroundColor: Color.fromARGB(255, 190, 254, 250),
       context: context,
       builder: (BuildContext context) {

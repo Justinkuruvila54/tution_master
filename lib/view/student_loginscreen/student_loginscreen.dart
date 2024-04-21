@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:tution_master/student_bottomtab/student_bottomtab.dart';
-import 'package:tution_master/student_signupscreen/student_signupscreen.dart';
+import 'package:tution_master/view/student_bottomtab/student_bottomtab.dart';
+import 'package:tution_master/view/student_signupscreen/student_signupscreen.dart';
 
 class Studentloginscreen extends StatelessWidget {
   @override

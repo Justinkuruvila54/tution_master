@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:tution_master/slection_loginscreen/selection_loginscreen.dart';
+import 'package:tution_master/view/slection_loginscreen/selection_loginscreen.dart';
 import 'package:tution_master/utils/colors_constants.dart';
 
 class Splashscreen extends StatefulWidget {

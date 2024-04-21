@@ -3,9 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tution_master/student_loginscreen/student_loginscreen.dart';
+import 'package:tution_master/view/student_loginscreen/student_loginscreen.dart';
 
-import 'package:tution_master/teacher_loginpage/teacher_loginscreen.dart';
+import 'package:tution_master/view/teacher_loginpage/teacher_loginscreen.dart';
 
 class Selectionuserscreen extends StatefulWidget {
   const Selectionuserscreen({super.key});

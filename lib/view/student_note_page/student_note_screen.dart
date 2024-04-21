@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tution_master/student_note_page/widget/student_bottomsheet.dart';
-import 'package:tution_master/student_note_page/widget/student_note_list_container.dart';
+import 'package:tution_master/view/student_note_page/widget/student_bottomsheet.dart';
+import 'package:tution_master/view/student_note_page/widget/student_note_list_container.dart';
 import 'package:tution_master/utils/colors_constants.dart';
 
 class Studentnotescreen extends StatefulWidget {
