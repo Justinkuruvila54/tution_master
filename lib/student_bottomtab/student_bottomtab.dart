@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tution_master/student_addedlist_page/student_addedlist-screen.dart';
+import 'package:tution_master/student_note_page/student_note_screen.dart';
 import 'package:tution_master/student_search_page/student_search_screen.dart';
 import 'package:tution_master/studenthomescreen/student_homescreen.dart';
 
@@ -16,7 +17,8 @@ class _StudentbottomtabState extends State<Studentbottomtab> {
   List<Widget> bottomscreen = [
     Studenthomescreen(),
     Studentsearchscreen(),
-    Studentaddedlistscreen()
+    Studentaddedlistscreen(),
+    Studentnotescreen()
   ];
 
   int selectedindex = 0;
@@ -24,9 +26,6 @@ class _StudentbottomtabState extends State<Studentbottomtab> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Color(0xff0095FF),
-          ),
           bottomNavigationBar: BottomNavigationBar(
               iconSize: 28,
               backgroundColor: Color(0xff0095FF),
@@ -45,6 +44,8 @@ class _StudentbottomtabState extends State<Studentbottomtab> {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.playlist_add_rounded),
                     label: "added list"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.note_alt_outlined), label: "Note"),
               ]),
           body: bottomscreen[selectedindex]),
     );

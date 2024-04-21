@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tution_master/slection_loginscreen/selection_loginscreen.dart';
+import 'package:tution_master/utils/colors_constants.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -25,7 +26,7 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colorconstant.mainblack,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +40,7 @@ class _SplashscreenState extends State<Splashscreen> {
               height: 0,
             ),
             CircularProgressIndicator(
-              color: Colors.grey,
+              color: Colorconstant.maingrey,
             )
           ],
         ),

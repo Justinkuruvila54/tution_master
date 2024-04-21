@@ -1,8 +1,22 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Teachersignupscreen extends StatelessWidget {
+class Teachersignupscreen extends StatefulWidget {
+  @override
+  State<Teachersignupscreen> createState() => _TeachersignupscreenState();
+}
+
+class _TeachersignupscreenState extends State<Teachersignupscreen> {
+  CollectionReference collectionReference =
+      FirebaseFirestore.instance.collection("Teacher");
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController subjectcontroller = TextEditingController();
+  TextEditingController qualificationcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,54 +66,98 @@ class Teachersignupscreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Column(children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
-                          hintText: "Name",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 5))),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          hintText: "Email",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 5))),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.menu_book_rounded),
-                          hintText: "Subject",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 5))),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.school),
-                          hintText: "Qualification",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 5))),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock_outline),
-                          hintText: "Password",
-                          border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 10, color: Colors.black))),
-                    ),
+                    Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              controller: namecontroller,
+                              decoration: InputDecoration(
+                                  label: Text("Name"),
+                                  prefixIcon: Icon(Icons.person),
+                                  hintText: "Name",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(width: 5))),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              controller: emailcontroller,
+                              decoration: InputDecoration(
+                                  label: Text("Email"),
+                                  prefixIcon: Icon(Icons.email),
+                                  hintText: "Email",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(width: 5))),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              controller: subjectcontroller,
+                              decoration: InputDecoration(
+                                  label: Text("Subject"),
+                                  prefixIcon: Icon(Icons.menu_book_rounded),
+                                  hintText: "Subject",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(width: 5))),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              controller: qualificationcontroller,
+                              decoration: InputDecoration(
+                                  label: Text("Qualification"),
+                                  prefixIcon: Icon(Icons.school),
+                                  hintText: "Qualification",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(width: 5))),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.lock_outline),
+                                  hintText: "Password",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          width: 10, color: Colors.black))),
+                            ),
+                          ],
+                        )),
                     SizedBox(
                       height: 10,
                     ),
@@ -120,7 +178,21 @@ class Teachersignupscreen extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // If the form is valid, display a snackbar. In the real world,
+                          // you'd often call a server or save the information in a database.
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+
+                          collectionReference.add({
+                            "Name": namecontroller.text,
+                            "Subject": subjectcontroller.text,
+                            "Qualification": qualificationcontroller.text
+                          });
+                        }
+                      },
                       color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
