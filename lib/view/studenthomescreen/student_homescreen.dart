@@ -111,14 +111,38 @@ class _StudenthomescreenState extends State<Studenthomescreen> {
                                             ),
                                           ],
                                         ),
-                                        Container(
-                                            height: 35,
-                                            width: 70,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: Colors.red),
-                                            child: Center(child: Text("add")))
+                                        InkWell(
+                                          onTap: () {
+                                            try {
+                                              FirebaseFirestore.instance
+                                                  .collection(
+                                                      'selectedteacherlist')
+                                                  .add({
+                                                "Name": userssnap["Name"],
+                                                "Subject": userssnap["Subject"],
+                                                "Qualification":
+                                                    userssnap["Qualification"]
+                                              }).then((value) {
+                                                print(
+                                                    "Teacher added to selected list");
+                                              }).catchError((error) {
+                                                print(
+                                                    "Failed to add teacher: $error");
+                                              });
+                                            } catch (e) {
+                                              print("Error: $e");
+                                            }
+                                          },
+                                          child: Container(
+                                              height: 35,
+                                              width: 70,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: Colors.red),
+                                              child:
+                                                  Center(child: Text("add"))),
+                                        )
                                       ],
                                     ),
                                   ));
